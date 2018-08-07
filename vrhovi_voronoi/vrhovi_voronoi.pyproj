@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>89b053cd-e79f-49eb-ae3b-2dcf8a6cee20</ProjectGuid>
+    <ProjectGuid>c691868f-4929-41ce-90a3-c1f67387f2cf</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>vrhovi.py</StartupFile>
+    <StartupFile>vrhovi_voronoi.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>vrhovi</Name>
-    <RootNamespace>vrhovi</RootNamespace>
+    <Name>vrhovi_voronoi</Name>
+    <RootNamespace>vrhovi_voronoi</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,19 +21,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="grid.py" />
-    <Compile Include="planning.py" />
-    <Compile Include="vrhovi.py" />
+    <Compile Include="vrhovi_voronoi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="grid_arp_pickel.pickel" />
-    <Content Include="grid_pickel.pickel" />
-    <Content Include="skel_arp_pickel.pickel" />
-    <Content Include="skel_pickel.pickel" />
     <Content Include="vrhovi_new.csv" />
-    <Content Include="vrhovi__srbije-Fractal-ansi.csv" />
-    <Content Include="vrhovi__srbije-Fractal-Copy.csv" />
-    <Content Include="vrhovi__srbije-Fractal-unicode.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

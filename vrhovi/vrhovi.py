@@ -13,6 +13,7 @@ import pickle
 
 vrhovi_fajl = "vrhovi__srbije-Fractal-unicode.csv"
 geodetic_home_coordinates = [21.931919, 43.333313, 200] #long, lat, alt
+geodetic_arp_coordinates = [21.853722, 43.337289, 198]
 data_regex = re.compile(r'[-+]?\d*\.\,\d+|\d+')
 
 def global_to_local_tops(global_position, global_home):
@@ -42,59 +43,58 @@ def tops(csv_fajl):
 
             if reg_N:
                 deg, min, sec = reg_N[:]
-                m = float(min) + float(sec) / 1000
-                coord_N = float(deg) + m / 60
+                m = int(min) + int(sec) / 1000
+                coord_N = int(deg) + m / 60
             if reg_E:
                 deg, min, sec = reg_E[:]
-                m = float(min) + float(sec) / 1000
-                coord_E = float(deg) + m / 60
-            N,E,D = global_to_local_tops([coord_E, coord_N, int(alt)], geodetic_home_coordinates)
+                m = int(min) + int(sec) / 1000
+                coord_E = int(deg) + m / 60
+            N,E,D = global_to_local_tops([coord_E, coord_N, int(alt)], geodetic_arp_coordinates)
             #new = np.append([N/1000,E/1000,D, 600, 600, D])
             vrhovi_list.append([N,E,D, 600, 600, D])
     return vrhovi_list
 
-vrhovi_np = np.array(tops(vrhovi_fajl))/100
+#vrhovi_np = np.array(tops(vrhovi_fajl)) / 1000
 
-print(vrhovi_np)
-np.savetxt('vrhovi_new.csv', vrhovi_np, delimiter=',')
-data = np.loadtxt("vrhovi_new.csv", delimiter=',', dtype='Float64')
+#print(vrhovi_np)
+#np.savetxt('vrhovi_new.csv', vrhovi_np, delimiter=',')
+#data = np.loadtxt("vrhovi_new.csv", delimiter=',', dtype='Float64')
 
-print(data)
+#print(data)
 
-new_data = []
-for row in data:
-    if np.absolute(row[0]) > 1000 or np.absolute(row[1]) > 1000:
-        continue
-    else:
-        new_data.append(row)
+#new_data = []
+#for row in data:
+#    if np.absolute(row[0]) > 300 or np.absolute(row[1]) > 300:
+#        continue
+#    else:
+#        new_data.append(row)
 
-small_data = np.array(new_data)
-print(small_data)
+#small_data = np.array(new_data)
+#print(small_data)
 
-start_ne = (260,  400)
-goal_ne = (505, 500)
+start_ne = (44,  87)
+goal_ne = (150, 250)
 
-drone_altitude = 0.55
+drone_altitude = 0.055
 safety_distance = 0.2
 
 
-#grid = create_grid(data, drone_altitude, safety_distance)
-#grid_pickle_out = open("grid_pickel.pickel", mode='wb')
+#grid = create_grid(small_data, drone_altitude, safety_distance)
+#grid_pickle_out = open("grid_arp_pickel.pickel", mode='wb')
 #pickle.dump(grid, grid_pickle_out)
 #grid_pickle_out.close()
 
 
 #skeleton = medial_axis(invert(grid))
-#outfile = open("skel_pickel.pickel", mode='wb')
+#outfile = open("skel_arp_pickel.pickel", mode='wb')
 #pickle.dump(skeleton, outfile)
 #outfile.close()
 
-
-grid_pickle_in = open("grid_pickel.pickel", mode='rb')
+grid_pickle_in = open("grid_arp_pickel.pickel", mode='rb')
 grid_pickle = pickle.load(grid_pickle_in)
 grid_pickle_in.close()
 
-skel_pickle_in = open("skel_pickel.pickel", mode='rb')
+skel_pickle_in = open("skel_arp_pickel.pickel", mode='rb')
 skel_pickle = pickle.load(skel_pickle_in)
 skel_pickle_in.close()
 
