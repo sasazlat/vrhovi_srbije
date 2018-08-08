@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from bresenham import bresenham
 from scipy.spatial import Voronoi, voronoi_plot_2d
 
-def create_grid_edges(data, drone_altitude, safety_distance):
+def create_grid_and_edges(data, drone_altitude, safety_distance):
     """
     Returns a grid representation of a 2D configuration space
     based on given obstacle data, drone altitude and safety distance
@@ -45,11 +45,10 @@ def create_grid_edges(data, drone_altitude, safety_distance):
 
     #voronoi_plot_2d(graph)
     #plt.show()
-    ridges = voronoi_graph.ridge_vertices
     edges = []
-    for edge in ridges:
-        p1 = ridges[edge[0]]
-        p2 = ridges[edge[1]]
+    for edge in voronoi_graph.ridge_vertices:
+        p1 = voronoi_graph.vertices[edge[0]]
+        p2 = voronoi_graph.vertices[edge[1]]
 
         cells = list(bresenham(int(p1[0]),int(p1[1]),int(p2[0]),int(p2[1])))
         hit = False
@@ -61,8 +60,8 @@ def create_grid_edges(data, drone_altitude, safety_distance):
                 hit = True
                 break
         if not hit:
-            p1 = (p1[0], p1[1])
-            p2 = (p2[0], p2[1])
+            #p1 = (p1[0], p1[1])
+            #p2 = (p2[0], p2[1])
             edges.append((p1,p2))
 
     return grid, edges
