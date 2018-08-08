@@ -22,10 +22,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="grid.py" />
+    <Compile Include="planning.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="vrhovi_voronoi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="colliders.csv" />
     <Content Include="edges_p.pickel" />
     <Content Include="grid_p.pickel" />
     <Content Include="vrhovi_new.csv" />
