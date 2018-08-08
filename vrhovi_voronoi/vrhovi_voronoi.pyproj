@@ -21,9 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="grid.py" />
     <Compile Include="vrhovi_voronoi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="edges_p.pickel" />
+    <Content Include="grid_p.pickel" />
     <Content Include="vrhovi_new.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
